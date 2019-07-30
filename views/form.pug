@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  -data = data || {}
+
+  if errors
+    ul.my-errors
+      for error in errors
+        li= error.msg
+
+  form(action="/" method="POST")
+    label(for="name") Name:
+    input(
+      type="text"
+      id="name"
+      class="form-control"
+      name="name"
+      value=data.name
+    )
+  
+    br
+    br
+
+    label(for="email") Email:
+    input(
+      type="email"
+      id="email"
+      class="form-control"
+      name="email"
+      value=data.email
+    )
+  
+    br
+    br
+
+    input(
+      type="submit"
+      value="Registrati"
+      class="btn btn-lg btn-primary btn-block"
+    )
+  
+  br
+  br
+  
+  a(class="btn btn-lg btn-primary btn-block" href="/admin") Accedi come admin

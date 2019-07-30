@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  -data = data || {}
+
+  form(action="/admin" method="POST")
+    label(for="name") Name:
+    input(
+      type="text"
+      id="name"
+      class="form-control"
+      name="name"
+      value=data.name
+    )
+  
+    br
+    br
+
+    label(for="email") Email:
+    input(
+      type="email"
+      id="email"
+      class="form-control"
+      name="email"
+      value=data.email
+    )
+  
+    br
+    br
+
+    input(
+      type="submit"
+      value="Accedi come admin"
+      class="btn btn-lg btn-primary btn-block"
+    )

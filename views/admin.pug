@@ -1,0 +1,16 @@
+extends layout
+
+block content
+  
+  a(class="btn btn-lg btn-primary btn-block" href="/users") Lista di tutti gli utenti
+  
+  h2.title Log registrazione utenti
+    ul#chat-messages
+  
+  script.
+    socket.on('newuser', function(user) {
+      $('#chat-messages').append($('<li class="user">').text('Nuovo utente creato!'));
+      $('#chat-messages').append($('<h3>').text('Nome: ' + user.name));
+      $('#chat-messages').append($('<h3>').text('Email: ' + user.email));
+    })
+    

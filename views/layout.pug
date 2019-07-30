@@ -1,0 +1,32 @@
+doctype html
+html
+  head
+    title= `${title}`
+    link(rel='stylesheet', href='/css/app.css')
+    link(rel='stylesheet', href='/css/bootstrap.min.css')
+    script(src='/js/index.js')
+    script(src='https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js')
+    script(src="https://code.jquery.com/jquery-3.4.1.min.js"
+      integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+      crossorigin="anonymous")
+    script.
+      const socket = io();
+
+  body
+    div.container.listing-reg.text-center
+      a(class="text-decoration-none text-dark" href="/")
+        h1 Simple Form With Express
+                  
+    if message && message.type == "success"
+      h3.alert.alert-success.fixed-bottom= message.text
+      if message.text=="Nuovo utente creato!"
+
+          
+        script.
+          let user= !{JSON.stringify(user)}
+          socket.emit('newuser',user)
+      
+    if message && message.type == "error"
+      h3.alert.alert-danger.fixed-bottom= message.text
+
+    block content

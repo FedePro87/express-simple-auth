@@ -1,0 +1,21 @@
+extends layout
+
+block content
+        
+  if users.length
+    table.listing-table.table-dark.table-striped
+      tr
+        th Name
+        th Email
+        th
+      each user in users
+        tr
+          td= user.name
+          td= user.email
+          td.btn.d-table-cell
+            form(method="POST" action="/users?_method=DELETE")
+              input(type="hidden" name="id" value=user.id)
+              button(type="submit" class="btn btn-danger")
+                i.fas.fa-trash
+  else
+    p No registrations yet :(
